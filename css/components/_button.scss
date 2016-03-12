@@ -1,0 +1,25 @@
+%button {
+	display: inline-block;
+	position: relative;
+	min-width: $card-content-height - $card-padding;
+	height: $card-content-height - $card-padding;
+	line-height: $card-content-height - $card-padding;
+	margin: 0;
+	padding: 0 16px;
+	border: 0;
+	border-radius: 2px;
+	vertical-align: middle;
+	font-family: inherit;
+	font-size: 14px;
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: 0;
+	overflow: hidden;
+	cursor: pointer;
+	text-decoration: none;
+	text-align: center;
+
+	&:hover, &:focus {
+		background: rgba(0, 0, 0, 0.1);
+	}
+}

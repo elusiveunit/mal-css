@@ -1,0 +1,11 @@
+/* General */
+#list_surround {
+	*,
+	*:before,
+	*:after {
+		box-sizing: border-box;
+	}
+	> br {
+		display: none;
+	}
+}

@@ -1,0 +1,52 @@
+%card {
+	@include shadow-2dp;
+
+	display: inline-block;
+	vertical-align: top;
+	border-radius: 2px;
+	background: #fff;
+}
+
+%card-rounding {
+	border-radius: 2px;
+	overflow: hidden;
+}
+
+%card-title {
+	display: block;
+	position: absolute;
+	width: 100%;
+	padding: 0 16px;
+	color: $color-foreground;
+	font-size: $card-title-font-size;
+	line-height: $card-title-line-height;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+%card-title-overlay {
+	display: block;
+	position: absolute;
+	width: 100%;
+	padding: 10px;
+	color: #fff;
+	font-size: $card-title-font-size;
+	line-height: $card-title-line-height;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+%card-caption {
+	display: block;
+	position: absolute;
+	width: 100%;
+	padding: 10px;
+	background: rgba(0, 0, 0, 0.6);
+	color: #fff;
+	font-size: 14px;
+	font-weight: 500;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
