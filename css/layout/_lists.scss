@@ -8,6 +8,14 @@ div[id^="more"][style*="block"] {
 	vertical-align: top;
 }
 
+/* The cell margin doesn't overflow on Chrome, which causes overlap. */
+@supports (-webkit-appearance:none) {
+	#list_surround > table ~ table:not([class]),
+	div[id^="more"][style*="block"] {
+		margin-bottom: $card-content-height + $card-vertical-margin;
+	}
+}
+
 
 
 /* -Each list row

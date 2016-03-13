@@ -1,12 +1,12 @@
-#mal_control_strip#mal_control_strip {
+body #mal_control_strip {
 	position: relative;
 	margin-bottom: -1px;
 	background: $color-primary;
 	z-index: 5;
 
 	&, td, div, a {
-		font-family: inherit;
-		font-size: 14px;
+		font-family: inherit !important;
+		font-size: 14px !important;
 		color: $palette-grey-200;
 	}
 	td {
@@ -28,7 +28,7 @@
 		}
 	}
 }
-#mal_cs_powered#mal_cs_powered {
+body #mal_cs_powered {
 	position: static;
 	width: 90% !important;
 	padding-top: 10px !important;

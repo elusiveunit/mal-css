@@ -1126,7 +1126,7 @@ a[href^="/anime/31043/"] {
   background: #fff;
 }
 
-#mal_cs_powered#mal_cs_powered #search #searchBox, .td1:nth-child(5) form span[style*="block"] input[type="text"],
+body #mal_cs_powered #search #searchBox, .td1:nth-child(5) form span[style*="block"] input[type="text"],
 .td1 div[id^="scorediv"][style*="block"] input[type="text"], .td2:nth-child(5) form span[style*="block"] input[type="text"],
 .td2 div[id^="scorediv"][style*="block"] input[type="text"] {
   padding: 4px 0;
@@ -1136,7 +1136,7 @@ a[href^="/anime/31043/"] {
   font-size: 16px;
 }
 
-#mal_cs_powered#mal_cs_powered #search #searchBox:focus, .td1:nth-child(5) form span[style*="block"] input[type="text"]:focus,
+body #mal_cs_powered #search #searchBox:focus, .td1:nth-child(5) form span[style*="block"] input[type="text"]:focus,
 .td1 div[id^="scorediv"][style*="block"] input[type="text"]:focus, .td2:nth-child(5) form span[style*="block"] input[type="text"]:focus,
 .td2 div[id^="scorediv"][style*="block"] input[type="text"]:focus {
   border-bottom-color: #3f51b5;
@@ -1168,82 +1168,82 @@ a[href^="/anime/31043/"] {
   display: none;
 }
 
-#mal_control_strip#mal_control_strip {
+body #mal_control_strip {
   position: relative;
   margin-bottom: -1px;
   background: #3f51b5;
   z-index: 5;
 }
 
-#mal_control_strip#mal_control_strip, #mal_control_strip#mal_control_strip td, #mal_control_strip#mal_control_strip div, #mal_control_strip#mal_control_strip a {
-  font-family: inherit;
-  font-size: 14px;
+body #mal_control_strip, body #mal_control_strip td, body #mal_control_strip div, body #mal_control_strip a {
+  font-family: inherit !important;
+  font-size: 14px !important;
   color: #eeeeee;
 }
 
-#mal_control_strip#mal_control_strip td {
+body #mal_control_strip td {
   width: auto;
   padding: 5px 20px;
   border: 0;
   white-space: nowrap;
 }
 
-#mal_control_strip#mal_control_strip td div {
+body #mal_control_strip td div {
   margin: 5px 0;
 }
 
-#mal_control_strip#mal_control_strip a {
+body #mal_control_strip a {
   margin-right: 10px;
   text-decoration: none;
 }
 
-#mal_control_strip#mal_control_strip a:hover, #mal_control_strip#mal_control_strip a:focus {
+body #mal_control_strip a:hover, body #mal_control_strip a:focus {
   text-decoration: underline;
 }
 
-#mal_cs_powered#mal_cs_powered {
+body #mal_cs_powered {
   position: static;
   width: 90% !important;
   padding-top: 10px !important;
   text-align: right;
 }
 
-#mal_cs_powered#mal_cs_powered > a {
+body #mal_cs_powered > a {
   position: relative;
   margin: 0 !important;
   font-size: 12px !important;
 }
 
-#mal_cs_powered#mal_cs_powered > a:before {
+body #mal_cs_powered > a:before {
   content: 'Powered by MyAnimeList.net';
 }
 
-#mal_cs_powered#mal_cs_powered > a > img {
+body #mal_cs_powered > a > img {
   visibility: hidden;
   width: 1px !important;
 }
 
-#mal_cs_powered#mal_cs_powered #search {
+body #mal_cs_powered #search {
   position: relative;
 }
 
-#mal_cs_powered#mal_cs_powered #search input,
-#mal_cs_powered#mal_cs_powered #search img {
+body #mal_cs_powered #search input,
+body #mal_cs_powered #search img {
   vertical-align: middle;
 }
 
-#mal_cs_powered#mal_cs_powered #search #searchBox {
+body #mal_cs_powered #search #searchBox {
   margin-right: 5px;
   border-bottom-color: rgba(255, 255, 255, 0.5);
   color: rgba(255, 255, 255, 0.5);
   font-size: 12px;
 }
 
-#mal_cs_powered#mal_cs_powered #search #searchBox:focus {
+body #mal_cs_powered #search #searchBox:focus {
   border-bottom-color: #fb8c00;
 }
 
-#mal_cs_powered#mal_cs_powered #search:after {
+body #mal_cs_powered #search:after {
   content: '';
   display: block;
   position: absolute;
@@ -1254,7 +1254,7 @@ a[href^="/anime/31043/"] {
   background: url("../img/search-light.svg") no-repeat 50% 50%;
 }
 
-#mal_cs_powered#mal_cs_powered #searchListButton {
+body #mal_cs_powered #searchListButton {
   display: inline-block;
   position: relative;
   width: 24px;
@@ -1356,6 +1356,14 @@ div[id^="more"][style*="block"] {
   width: 225px !important;
   margin: 7px 5px;
   vertical-align: top;
+}
+
+/* The cell margin doesn't overflow on Chrome, which causes overlap. */
+@supports (-webkit-appearance: none) {
+  #list_surround > table ~ table:not([class]),
+  div[id^="more"][style*="block"] {
+    margin-bottom: 62px;
+  }
 }
 
 /* -Each list row
