@@ -7,17 +7,17 @@ module.exports = function(grunt) {
 			options: {
 				outputStyle: 'expanded'
 			},
-			style: {
+			cards: {
         files: {
-          'css/style.css': 'css/style.scss'
+          'css/material-cards.css': 'css/material-cards.scss'
         }
 			}
 		},
 
 		cssmin: {
-			style: {
+			cards: {
 				files: {
-          'css/style.min.css': 'css/style.css'
+          'css/material-cards.min.css': 'css/material-cards.css'
         }
 			}
 		},
