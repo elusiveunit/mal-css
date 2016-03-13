@@ -1,29 +1,63 @@
 /* Status filter */
-#list_surround {
-	> table:first-of-type {
-		table-layout: fixed;
+#list_surround > table:first-of-type {
+	@include shadow-2dp();
 
-		td {
-			width: auto;
-			padding-top: 100px;
-			border: 0 !important;
-			border-bottom: 2px solid transparent !important;
-			background: $color-primary;
-		}
-		.status_selected {
-			border-bottom-color: $color-accent !important;
-		}
-		a {
+	width: calc(100% + (#{$page-margin * 2}));
+	margin-left: -$page-margin;
+	margin-right: -$page-margin;
+	table-layout: fixed;
+	-webkit-box-sizing: content-box;
+	   -moz-box-sizing: content-box;
+	        box-sizing: content-box;
+
+	td {
+		width: auto;
+		padding-top: 40px;
+		border: 0 !important;
+		border-bottom: 2px solid transparent !important;
+		background: $color-primary;
+	}
+	a {
+		display: block;
+		position: relative;
+		padding: 15px 10px;
+		overflow: hidden;
+		color: rgba(255, 255, 255, 0.7);
+		font-weight: 500;
+		text-transform: uppercase;
+		text-decoration: none;
+		transition: color 0.15s $animation-curve-default;
+
+		&:after {
+			content: '';
 			display: block;
-			padding: 15px 10px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 0;
+			height: 0;
+			border-radius: 50%;
+			background: rgba(255,255,255,0.1);
+			transition: width 0.2s $animation-curve-default, height 0.2s $animation-curve-default;
+			transform: translateX(-50%) translateY(-50%);
+		}
+		&:hover, &:focus {
 			color: #fff;
-			font-weight: 500;
-			text-transform: uppercase;
-			text-decoration: none;
 
-			&:hover, &:focus {
-				background: rgba(255,255,255,0.1);
+			&:after {
+				width: 120%;
+				height: 300px;
 			}
 		}
+	}
+	.status_selected {
+		border-bottom-color: $color-accent !important;
+
+		a {
+			color: #fff;
+		}
+	}
+	@media screen and (max-width: 1200px) {
+		table-layout: auto;
 	}
 }

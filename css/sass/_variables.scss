@@ -1,19 +1,39 @@
-$color-background: #f5f5f5;
-$color-foreground: #555;
+$show-score-and-episodes-tooltips: false;
+
+$page-margin: 20px;
+
+/* Cards */
+$card-image-width: 225px;
+$card-image-height: 300px;
+
+$card-horizontal-margin: 5px;
+$card-vertical-margin: 7px;
 
 $card-padding: 16px;
 $card-padding-small: 8px;
+
 $card-title-font-size: 18px;
 $card-title-line-height: 1.25;
-$card-content-height: ($card-padding * 2) + ($card-title-font-size * $card-title-line-height);
+$card-content-height: round(($card-padding * 2) + ($card-title-font-size * $card-title-line-height));
+
+$card-dialog-top: 90px;
+$card-dialog-margin: 50px;
 
 /* Colors */
+$color-background: #f5f5f5;
+$color-foreground: #555;
+
 $color-primary: $palette-indigo-500;
 $color-primary-dark: $palette-indigo-700;
-$color-accent: $palette-pink-A200;
 
-$color-action: $palette-blue-500;
-$color-action-active: $palette-indigo-A400;
+$color-secondary: $palette-blue-500;
+$color-secondary-dark: $palette-indigo-A400;
+
+$color-accent: $palette-orange-600;
+
+$color-white-separator: #eaeaea;
+
+$color-text-field-border: #ddd;
 
 /* Animation */
 $animation-curve-fast-out-slow-in: cubic-bezier(0.4, 0, 0.2, 1);

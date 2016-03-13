@@ -1,10 +1,8 @@
 /* General */
 #list_surround {
-	*,
-	*:before,
-	*:after {
-		box-sizing: border-box;
-	}
+	padding-left: $page-margin;
+	padding-right: $page-margin;
+
 	> br {
 		display: none;
 	}

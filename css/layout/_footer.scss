@@ -1,0 +1,21 @@
+#grand_totals,
+#copyright {
+	width: calc(100% + (#{$page-margin * 2}));
+	margin-left: -$page-margin;
+	margin-right: -$page-margin;
+	background: $palette-grey-800;
+	text-align: center;
+}
+#grand_totals {
+	margin-top: 50px;
+	padding: 30px 20px 10px;
+	color: $palette-grey-300;
+	font-size: 14px;
+}
+#copyright {
+	margin-top: 0 !important;
+	padding: 10px 20px 30px;
+	color: $palette-grey-500;
+	font-size: 12px;
+	font-weight: 500;
+}

@@ -1,0 +1,89 @@
+#mal_control_strip#mal_control_strip {
+	position: relative;
+	margin-bottom: -1px;
+	background: $color-primary;
+	z-index: 5;
+
+	&, td, div, a {
+		font-family: inherit;
+		font-size: 14px;
+		color: $palette-grey-200;
+	}
+	td {
+		width: auto;
+		padding: 5px 20px;
+		border: 0;
+		white-space: nowrap;
+
+		div {
+			margin: 5px 0;
+		}
+	}
+	a {
+		margin-right: 10px;
+		text-decoration: none;
+
+		&:hover, &:focus {
+			text-decoration: underline;
+		}
+	}
+}
+#mal_cs_powered#mal_cs_powered {
+	position: static;
+	width: 90% !important;
+	padding-top: 10px !important;
+	text-align: right;
+
+	> a {
+		position: relative;
+		margin: 0 !important;
+		font-size: 12px !important;
+
+		&:before {
+			content: 'Powered by MyAnimeList.net';
+		}
+		> img {
+			visibility: hidden;
+			width: 1px !important;
+		}
+	}
+	#search {
+		position: relative;
+
+		input,
+		img {
+			vertical-align: middle;
+		}
+		#searchBox {
+			@extend %text-field;
+
+			margin-right: 5px;
+			border-bottom-color: rgba(255, 255, 255, 0.5);
+			color: rgba(255, 255, 255, 0.5);
+			font-size: 12px;
+
+			&:focus {
+				border-bottom-color: $color-accent;
+			}
+		}
+		&:after {
+			content: '';
+			display: block;
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			width: 24px;
+			height: 24px;
+			background: url('../img/search-light.svg') no-repeat 50% 50%;
+		}
+	}
+	#searchListButton {
+		display: inline-block;
+		position: relative;
+		width: 24px;
+		height: 24px;
+		opacity: 0;
+		cursor: pointer;
+		z-index: 2;
+	}
+}

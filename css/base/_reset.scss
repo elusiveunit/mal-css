@@ -1,0 +1,83 @@
+/* -Zeroing
+-----------------------------------------------------------------------------*/
+html, body, object, iframe,
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, img, small,
+dl, dt, dd, ol, ul, li,
+figure, fieldset, legend,
+table, caption, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* -Global
+-----------------------------------------------------------------------------*/
+html {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+#list_surround {
+  *, *:before, *:after {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+}
+
+/* -Forms
+-----------------------------------------------------------------------------*/
+label,
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer;
+}
+button[disabled],
+input[disabled] {
+  cursor: default;
+}
+button, input, select, textarea {
+  font-size: 99%;
+  margin: 0;
+  vertical-align: baseline;
+}
+button, input {
+  line-height: normal;
+}
+button, select {
+  text-transform: none;
+}
+button {
+  overflow: visible;
+}
+input[type="checkbox"],
+input[type="radio"] {
+  padding: 0;
+  cursor: pointer;
+}
+input[type="tel"],
+input[type="url"],
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="search"]::-webkit-search-decoration,
+input[type="number"],
+input[type="password"],
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: none;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/* Must separate rules so non-matching browsers don't ignore each other */
+input {
+  &::-webkit-input-placeholder {color: #888; color: rgba(0,0,0,0.5); opacity: 1;}
+  &:-ms-input-placeholder {color: #888; color: rgba(0,0,0,0.5); opacity: 1;}
+  &::-moz-placeholder {color: #888; color: rgba(0,0,0,0.5); opacity: 1;}
+}

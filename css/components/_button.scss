@@ -2,13 +2,15 @@
 	display: inline-block;
 	position: relative;
 	min-width: $card-content-height - $card-padding;
-	height: $card-content-height - $card-padding;
-	line-height: $card-content-height - $card-padding;
+	height: 36px;
+	line-height: 36px;
 	margin: 0;
-	padding: 0 16px;
+	padding: 0 14px;
 	border: 0;
 	border-radius: 2px;
 	vertical-align: middle;
+	background: transparent;
+	color: $color-secondary;
 	font-family: inherit;
 	font-size: 14px;
 	font-weight: 500;
@@ -18,8 +20,19 @@
 	cursor: pointer;
 	text-decoration: none;
 	text-align: center;
+	transition: background 0.2s $animation-curve-default;
 
 	&:hover, &:focus {
-		background: rgba(0, 0, 0, 0.1);
+		background: rgba(158, 158, 158, 0.2);
+	}
+}
+%button-primary {
+	@extend %button;
+
+	background: $color-primary;
+	color: #fff;
+
+	&:hover, &:focus {
+		background: darken($color-primary, 10%);
 	}
 }

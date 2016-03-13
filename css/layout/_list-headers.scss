@@ -2,5 +2,15 @@
 table[class^="header_"] {
 	display: block;
 	width: 100%;
+	margin-top: 50px;
+	margin-bottom: 10px;
 	text-align: left;
+
+	& ~ & {
+		margin-top: 80px;
+	}
+	td {
+		font-size: 45px;
+		font-weight: 300;
+	}
 }

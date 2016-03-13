@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 /* ==========  Color Palettes  ========== */
+/* Cards */
 /* Colors */
 /* Animation */
 /* Shadows */
@@ -34,14 +35,120 @@
  */
 /* Shadows */
 /* Animations */
+/* -Zeroing
+-----------------------------------------------------------------------------*/
+html, body, object, iframe,
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, img, small,
+dl, dt, dd, ol, ul, li,
+figure, fieldset, legend,
+table, caption, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* -Global
+-----------------------------------------------------------------------------*/
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+#list_surround *, #list_surround *:before, #list_surround *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* -Forms
+-----------------------------------------------------------------------------*/
+label,
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer;
+}
+
+button[disabled],
+input[disabled] {
+  cursor: default;
+}
+
+button, input, select, textarea {
+  font-size: 99%;
+  margin: 0;
+  vertical-align: baseline;
+}
+
+button, input {
+  line-height: normal;
+}
+
+button, select {
+  text-transform: none;
+}
+
+button {
+  overflow: visible;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  padding: 0;
+  cursor: pointer;
+}
+
+input[type="tel"],
+input[type="url"],
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="search"]::-webkit-search-decoration,
+input[type="number"],
+input[type="password"],
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: none;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/* Must separate rules so non-matching browsers don't ignore each other */
+input::-webkit-input-placeholder {
+  color: #888;
+  color: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+}
+
+input:-ms-input-placeholder {
+  color: #888;
+  color: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+}
+
+input::-moz-placeholder {
+  color: #888;
+  color: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+}
+
 /* Base */
 html, body {
   background: #f5f5f5;
-  color: #555;
-  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
+}
+
+body, button, input, textarea {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  color: #555;
 }
 
 a:link, a:visited {
@@ -932,17 +1039,27 @@ a[href^="/anime/31043/"] {
   background-image: url("http://cdn.myanimelist.net/images/anime/10/77957.jpg");
 }
 
-.td1:nth-child(3) a, .td2:nth-child(3) a {
+.td1:nth-child(3) a,
+.td1:nth-child(5) > span[id^="epText"] > a, .td2:nth-child(3) a,
+.td2:nth-child(5) > span[id^="epText"] > a, .td1:nth-child(2) > div a, .td2:nth-child(2) > div a, .td1:nth-child(5) > a[href^="javascript"], .td2:nth-child(5) > a[href^="javascript"], .td1:nth-child(5) form span[style*="block"] input[type="button"],
+.td1:nth-child(5) form span[style*="block"] input[type="submit"],
+.td1 div[id^="scorediv"][style*="block"] input[type="button"],
+.td1 div[id^="scorediv"][style*="block"] input[type="submit"], .td2:nth-child(5) form span[style*="block"] input[type="button"],
+.td2:nth-child(5) form span[style*="block"] input[type="submit"],
+.td2 div[id^="scorediv"][style*="block"] input[type="button"],
+.td2 div[id^="scorediv"][style*="block"] input[type="submit"] {
   display: inline-block;
   position: relative;
-  min-width: 38.5px;
-  height: 38.5px;
-  line-height: 38.5px;
+  min-width: 39px;
+  height: 36px;
+  line-height: 36px;
   margin: 0;
-  padding: 0 16px;
+  padding: 0 14px;
   border: 0;
   border-radius: 2px;
   vertical-align: middle;
+  background: transparent;
+  color: #2196f3;
   font-family: inherit;
   font-size: 14px;
   font-weight: 500;
@@ -952,13 +1069,30 @@ a[href^="/anime/31043/"] {
   cursor: pointer;
   text-decoration: none;
   text-align: center;
+  transition: background 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.td1:nth-child(3) a:hover, .td2:nth-child(3) a:hover, .td1:nth-child(3) a:focus, .td2:nth-child(3) a:focus {
-  background: rgba(0, 0, 0, 0.1);
+.td1:nth-child(3) a:hover,
+.td1:nth-child(5) > span[id^="epText"] > a:hover, .td2:nth-child(3) a:hover,
+.td2:nth-child(5) > span[id^="epText"] > a:hover, .td1:nth-child(2) > div a:hover, .td2:nth-child(2) > div a:hover, .td1:nth-child(5) > a[href^="javascript"]:hover, .td2:nth-child(5) > a[href^="javascript"]:hover, .td1:nth-child(5) form span[style*="block"] input[type="button"]:hover,
+.td1:nth-child(5) form span[style*="block"] input[type="submit"]:hover,
+.td1 div[id^="scorediv"][style*="block"] input[type="button"]:hover,
+.td1 div[id^="scorediv"][style*="block"] input[type="submit"]:hover, .td2:nth-child(5) form span[style*="block"] input[type="button"]:hover,
+.td2:nth-child(5) form span[style*="block"] input[type="submit"]:hover,
+.td2 div[id^="scorediv"][style*="block"] input[type="button"]:hover,
+.td2 div[id^="scorediv"][style*="block"] input[type="submit"]:hover, .td1:nth-child(3) a:focus,
+.td1:nth-child(5) > span[id^="epText"] > a:focus, .td2:nth-child(3) a:focus,
+.td2:nth-child(5) > span[id^="epText"] > a:focus, .td1:nth-child(2) > div a:focus, .td2:nth-child(2) > div a:focus, .td1:nth-child(5) > a[href^="javascript"]:focus, .td2:nth-child(5) > a[href^="javascript"]:focus, .td1:nth-child(5) form span[style*="block"] input[type="button"]:focus,
+.td1:nth-child(5) form span[style*="block"] input[type="submit"]:focus,
+.td1 div[id^="scorediv"][style*="block"] input[type="button"]:focus,
+.td1 div[id^="scorediv"][style*="block"] input[type="submit"]:focus, .td2:nth-child(5) form span[style*="block"] input[type="button"]:focus,
+.td2:nth-child(5) form span[style*="block"] input[type="submit"]:focus,
+.td2 div[id^="scorediv"][style*="block"] input[type="button"]:focus,
+.td2 div[id^="scorediv"][style*="block"] input[type="submit"]:focus {
+  background: rgba(158, 158, 158, 0.2);
 }
 
-#list_surround > table ~ table:not([class]) {
+.td1:nth-child(1), .td2:nth-child(1), div[id^="more"] {
   box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   display: inline-block;
   vertical-align: top;
@@ -984,63 +1118,251 @@ a[href^="/anime/31043/"] {
   text-overflow: ellipsis;
 }
 
+.td1:nth-child(5) form span[style*="block"],
+.td1 div[id^="scorediv"][style*="block"], .td2:nth-child(5) form span[style*="block"],
+.td2 div[id^="scorediv"][style*="block"] {
+  box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
+  position: absolute;
+  background: #fff;
+}
+
+#mal_cs_powered#mal_cs_powered #search #searchBox, .td1:nth-child(5) form span[style*="block"] input[type="text"],
+.td1 div[id^="scorediv"][style*="block"] input[type="text"], .td2:nth-child(5) form span[style*="block"] input[type="text"],
+.td2 div[id^="scorediv"][style*="block"] input[type="text"] {
+  padding: 4px 0;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+  background: transparent;
+  font-size: 16px;
+}
+
+#mal_cs_powered#mal_cs_powered #search #searchBox:focus, .td1:nth-child(5) form span[style*="block"] input[type="text"]:focus,
+.td1 div[id^="scorediv"][style*="block"] input[type="text"]:focus, .td2:nth-child(5) form span[style*="block"] input[type="text"]:focus,
+.td2 div[id^="scorediv"][style*="block"] input[type="text"]:focus {
+  border-bottom-color: #3f51b5;
+  outline: 0;
+}
+
+@keyframes tooltip-show {
+  0% {
+    transform: translateX(-50%) scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(-50%) scale(0.99);
+  }
+  100% {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
 /* General */
-#list_surround *,
-#list_surround *:before,
-#list_surround *:after {
-  box-sizing: border-box;
+#list_surround {
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 #list_surround > br {
   display: none;
 }
 
+#mal_control_strip#mal_control_strip {
+  position: relative;
+  margin-bottom: -1px;
+  background: #3f51b5;
+  z-index: 5;
+}
+
+#mal_control_strip#mal_control_strip, #mal_control_strip#mal_control_strip td, #mal_control_strip#mal_control_strip div, #mal_control_strip#mal_control_strip a {
+  font-family: inherit;
+  font-size: 14px;
+  color: #eeeeee;
+}
+
+#mal_control_strip#mal_control_strip td {
+  width: auto;
+  padding: 5px 20px;
+  border: 0;
+  white-space: nowrap;
+}
+
+#mal_control_strip#mal_control_strip td div {
+  margin: 5px 0;
+}
+
+#mal_control_strip#mal_control_strip a {
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+#mal_control_strip#mal_control_strip a:hover, #mal_control_strip#mal_control_strip a:focus {
+  text-decoration: underline;
+}
+
+#mal_cs_powered#mal_cs_powered {
+  position: static;
+  width: 90% !important;
+  padding-top: 10px !important;
+  text-align: right;
+}
+
+#mal_cs_powered#mal_cs_powered > a {
+  position: relative;
+  margin: 0 !important;
+  font-size: 12px !important;
+}
+
+#mal_cs_powered#mal_cs_powered > a:before {
+  content: 'Powered by MyAnimeList.net';
+}
+
+#mal_cs_powered#mal_cs_powered > a > img {
+  visibility: hidden;
+  width: 1px !important;
+}
+
+#mal_cs_powered#mal_cs_powered #search {
+  position: relative;
+}
+
+#mal_cs_powered#mal_cs_powered #search input,
+#mal_cs_powered#mal_cs_powered #search img {
+  vertical-align: middle;
+}
+
+#mal_cs_powered#mal_cs_powered #search #searchBox {
+  margin-right: 5px;
+  border-bottom-color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+}
+
+#mal_cs_powered#mal_cs_powered #search #searchBox:focus {
+  border-bottom-color: #fb8c00;
+}
+
+#mal_cs_powered#mal_cs_powered #search:after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  background: url("../img/search-light.svg") no-repeat 50% 50%;
+}
+
+#mal_cs_powered#mal_cs_powered #searchListButton {
+  display: inline-block;
+  position: relative;
+  width: 24px;
+  height: 24px;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
 /* Status filter */
 #list_surround > table:first-of-type {
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  width: calc(100% + (40px));
+  margin-left: -20px;
+  margin-right: -20px;
   table-layout: fixed;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
 }
 
 #list_surround > table:first-of-type td {
   width: auto;
-  padding-top: 100px;
+  padding-top: 40px;
   border: 0 !important;
   border-bottom: 2px solid transparent !important;
   background: #3f51b5;
 }
 
-#list_surround > table:first-of-type .status_selected {
-  border-bottom-color: #ff4081 !important;
-}
-
 #list_surround > table:first-of-type a {
   display: block;
+  position: relative;
   padding: 15px 10px;
-  color: #fff;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.7);
   font-weight: 500;
   text-transform: uppercase;
   text-decoration: none;
+  transition: color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#list_surround > table:first-of-type a:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1), height 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-50%) translateY(-50%);
 }
 
 #list_surround > table:first-of-type a:hover, #list_surround > table:first-of-type a:focus {
-  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+#list_surround > table:first-of-type a:hover:after, #list_surround > table:first-of-type a:focus:after {
+  width: 120%;
+  height: 300px;
+}
+
+#list_surround > table:first-of-type .status_selected {
+  border-bottom-color: #fb8c00 !important;
+}
+
+#list_surround > table:first-of-type .status_selected a {
+  color: #fff;
+}
+
+@media screen and (max-width: 1200px) {
+  #list_surround > table:first-of-type {
+    table-layout: auto;
+  }
 }
 
 /* Anime list headers */
 table[class^="header_"] {
   display: block;
   width: 100%;
+  margin-top: 50px;
+  margin-bottom: 10px;
   text-align: left;
 }
 
-/* The actual lists. Each table is a row */
-#list_surround > table ~ table:not([class]) {
-  position: relative;
-  width: 225px !important;
-  height: 300px !important;
-  margin: 61.5px 5px;
-  /* Top title and bottom actions backgrounds */
+table[class^="header_"] ~ table[class^="header_"] {
+  margin-top: 80px;
 }
 
+table[class^="header_"] td {
+  font-size: 45px;
+  font-weight: 300;
+}
+
+/* Anime list rows and 'more' div. */
+#list_surround > table ~ table:not([class]),
+div[id^="more"][style*="block"] {
+  display: inline-block;
+  position: relative;
+  width: 225px !important;
+  margin: 62px 5px;
+  vertical-align: top;
+}
+
+/* -Each list row
+-----------------------------------------------------------------------------*/
 #list_surround > table ~ table:not([class]) tbody, #list_surround > table ~ table:not([class]) tr, #list_surround > table ~ table:not([class]) td {
   display: block;
   position: relative;
@@ -1057,95 +1379,286 @@ table[class^="header_"] {
   z-index: 2;
 }
 
-#list_surround > table ~ table:not([class]):before, #list_surround > table ~ table:not([class]):after {
+/* Each table column */
+.td1, .td2 {
+  position: absolute !important;
+  width: auto;
+  border: 0;
+  /* Index number
+	Pretty pointless information, so hide the contents and pretend the cell is
+	wrapper for the whole row. This is the only way to fully hide category_totals
+	below, since that selector is on the table cell and not the table itself.
+	Putting the card styles on the table above would leave the card and shadow
+	even with the totals content hidden. */
+  /* Title */
+  /* Score */
+  /* Type */
+  /* Episode count */
+  /* Score and episode count with optional tooltips */
+  /* Score and episode count buttons */
+  /* Bottom data */
+}
+
+.td1:nth-child(1), .td2:nth-child(1) {
+  position: relative !important;
+  width: 225px !important;
+  height: 300px !important;
+  color: transparent;
+  /* Top title and bottom actions backgrounds */
+}
+
+.td1:nth-child(1):before, .td1:nth-child(1):after, .td2:nth-child(1):before, .td2:nth-child(1):after {
   box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   content: '';
   display: block;
   position: absolute;
   left: 0;
   width: 100%;
-  height: 54.5px;
+  height: 55px;
   padding: 8px;
-  z-index: 1;
   background: #fff;
 }
 
-#list_surround > table ~ table:not([class]):before {
-  height: 54.5px;
+.td1:nth-child(1):before, .td2:nth-child(1):before {
+  height: 55px;
   bottom: 100%;
+  z-index: 1;
 }
 
-#list_surround > table ~ table:not([class]):after {
+.td1:nth-child(1):after, .td2:nth-child(1):after {
   top: 100%;
-}
-
-/* Each table column */
-.td1, .td2 {
-  position: absolute !important;
-  width: auto;
-  border: 0;
-  /* Index */
-  /* Title */
-  /* Score */
-  /* Type */
-  /* Episode count */
-}
-
-.td1:nth-child(1), .td2:nth-child(1) {
-  top: 0;
-  left: 0;
-  padding: 4px 8px;
-  background: #333;
-  color: #fff;
-  border-bottom-right-radius: 3px;
+  z-index: 3;
 }
 
 .td1:nth-child(2), .td2:nth-child(2) {
-  position: relative;
   width: 100%;
   height: 100%;
-}
-
-.td1:nth-child(2) > div, .td2:nth-child(2) > div {
-  display: none;
-  position: absolute;
   top: 0;
-  right: 0;
-}
-
-.td1:nth-child(2):hover > div, .td2:nth-child(2):hover > div {
-  display: block;
+  z-index: 2;
 }
 
 .td1:nth-child(3), .td2:nth-child(3) {
   left: 8px;
-  padding-left: 8px;
-}
-
-.td1:nth-child(3) a, .td2:nth-child(3) a {
-  position: relative;
-  top: 8px;
-  left: -8px;
 }
 
 .td1:nth-child(4), .td2:nth-child(4) {
   left: 50%;
   transform: translateX(-50%);
-  font-size: 14px;
 }
 
 .td1:nth-child(5), .td2:nth-child(5) {
   right: 8px;
-  padding-right: 8px;
+}
+
+.td1:nth-child(5) > span[id^="epText"], .td2:nth-child(5) > span[id^="epText"] {
+  display: inline-block;
+}
+
+.td1:nth-child(3), .td2:nth-child(3) {
+  padding-left: 16px;
+}
+
+.td1:nth-child(3) > a, .td2:nth-child(3) > a {
+  left: -16px;
+}
+
+.td1:nth-child(5), .td2:nth-child(5) {
+  padding-right: 16px;
+}
+
+.td1:nth-child(5) > span[id^="epText"] > a, .td2:nth-child(5) > span[id^="epText"] > a {
+  right: -16px;
+}
+
+.td1:nth-child(3) a,
+.td1:nth-child(5) > span[id^="epText"] > a, .td2:nth-child(3) a,
+.td2:nth-child(5) > span[id^="epText"] > a {
+  position: relative;
+  top: 8px;
+  height: 39px;
+  line-height: 39px;
 }
 
 .td1:nth-child(3), .td1:nth-child(4), .td1:nth-child(5), .td2:nth-child(3), .td2:nth-child(4), .td2:nth-child(5) {
   top: 100%;
-  height: 54.5px;
-  line-height: 54.5px;
+  height: 55px;
+  line-height: 55px;
+  font-size: 14px;
   z-index: 3;
 }
 
+/* -Edit/more and episode + 1
+-----------------------------------------------------------------------------*/
+.td1, .td2 {
+  /* ---------- Transitions ---------- */
+  /* Default state */
+}
+
+.td1:nth-child(2), .td2:nth-child(2) {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 2;
+}
+
+.td1:nth-child(2) > div, .td2:nth-child(2) > div {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 8px;
+  border-bottom: 1px solid #eaeaea;
+  background: #fff;
+  color: transparent;
+}
+
+.td1:nth-child(2) > div a:last-child, .td2:nth-child(2) > div a:last-child {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.td1:nth-child(5) > a[href^="javascript"], .td2:nth-child(5) > a[href^="javascript"] {
+  position: absolute;
+  bottom: 100%;
+  right: -8px;
+  margin-right: 112.5px;
+  margin-bottom: 9px;
+  white-space: nowrap;
+}
+
+.td1:nth-child(5) > a[href^="javascript"]:before, .td2:nth-child(5) > a[href^="javascript"]:before {
+  content: 'Ep';
+}
+
+.td1:nth-child(2) > div,
+.td1:nth-child(5) > a[href^="javascript"], .td2:nth-child(2) > div,
+.td2:nth-child(5) > a[href^="javascript"] {
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.td1:nth-child(2) > div, .td2:nth-child(2) > div {
+  transition-property: transform;
+  transition-delay: 0.2s;
+  transform: translateY(55px);
+}
+
+.td1:nth-child(5) > a[href^="javascript"], .td2:nth-child(5) > a[href^="javascript"] {
+  transition-property: transform, opacity;
+  transition-delay: 0.2s, 0s;
+  transform: translateX(50%) translateY(55px);
+  opacity: 0;
+}
+
+table:hover .td1:nth-child(2) > div, table:hover .td2:nth-child(2) > div {
+  transition-delay: 0s;
+  transform: translateY(0px);
+}
+
+table:hover .td1:nth-child(5) > a[href^="javascript"], table:hover .td2:nth-child(5) > a[href^="javascript"] {
+  transition-delay: 0s, 0.2s;
+  transform: translateX(50%) translateY(0px);
+  opacity: 1;
+}
+
+/* -Score and episode faux dialogs
+-----------------------------------------------------------------------------*/
+@keyframes dialog-edit {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.td1:nth-child(5) form span[style]:before, .td1:nth-child(5) form span[style]:after,
+.td1 div[id^="scorediv"]:before,
+.td1 div[id^="scorediv"]:after, .td2:nth-child(5) form span[style]:before, .td2:nth-child(5) form span[style]:after,
+.td2 div[id^="scorediv"]:before,
+.td2 div[id^="scorediv"]:after {
+  content: '';
+  display: block;
+  position: absolute;
+}
+
+.td1:nth-child(5) form span[style*="block"],
+.td1 div[id^="scorediv"][style*="block"], .td2:nth-child(5) form span[style*="block"],
+.td2 div[id^="scorediv"][style*="block"] {
+  top: -210px;
+  width: 125px;
+  padding: 22px 8px 8px;
+  line-height: 1.25;
+  background: #fff;
+  animation: 0.3s cubic-bezier(0.4, 0, 0.2, 1) dialog-edit;
+  text-align: right;
+}
+
+.td1:nth-child(5) form span[style*="block"]:before,
+.td1 div[id^="scorediv"][style*="block"]:before, .td2:nth-child(5) form span[style*="block"]:before,
+.td2 div[id^="scorediv"][style*="block"]:before {
+  font-size: 11px;
+  top: 8px;
+  left: 8px;
+}
+
+.td1:nth-child(5) form span[style*="block"]:after,
+.td1 div[id^="scorediv"][style*="block"]:after, .td2:nth-child(5) form span[style*="block"]:after,
+.td2 div[id^="scorediv"][style*="block"]:after {
+  top: -145px;
+  left: -50px;
+  width: 225px;
+  height: 410px;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: -1;
+}
+
+.td1:nth-child(5) form span[style*="block"] input[type="text"],
+.td1 div[id^="scorediv"][style*="block"] input[type="text"], .td2:nth-child(5) form span[style*="block"] input[type="text"],
+.td2 div[id^="scorediv"][style*="block"] input[type="text"] {
+  width: 100%;
+  text-align: center;
+}
+
+.td1:nth-child(5) form span[style*="block"] input[type="button"],
+.td1:nth-child(5) form span[style*="block"] input[type="submit"],
+.td1 div[id^="scorediv"][style*="block"] input[type="button"],
+.td1 div[id^="scorediv"][style*="block"] input[type="submit"], .td2:nth-child(5) form span[style*="block"] input[type="button"],
+.td2:nth-child(5) form span[style*="block"] input[type="submit"],
+.td2 div[id^="scorediv"][style*="block"] input[type="button"],
+.td2 div[id^="scorediv"][style*="block"] input[type="submit"] {
+  height: 2.25em;
+  line-height: 2.25em;
+  margin-top: 8px;
+}
+
+.td1 div[id^="scorediv"][style*="block"], .td2 div[id^="scorediv"][style*="block"] {
+  left: 42px;
+}
+
+.td1 div[id^="scorediv"][style*="block"]:before, .td2 div[id^="scorediv"][style*="block"]:before {
+  content: 'Score';
+}
+
+.td1:nth-child(5) form, .td2:nth-child(5) form {
+  display: block !important;
+  position: absolute;
+  bottom: 100%;
+  right: -8px;
+  width: 225px;
+}
+
+.td1:nth-child(5) form span[style*="block"], .td2:nth-child(5) form span[style*="block"] {
+  left: 50px;
+}
+
+.td1:nth-child(5) form span[style*="block"]:before, .td2:nth-child(5) form span[style*="block"]:before {
+  content: 'Episode';
+}
+
+/* -Anime image
+-----------------------------------------------------------------------------*/
 /* The element that gets matched by anime selectors, i.e. a[href^="/anime/"] */
 .animetitle {
   display: block;
@@ -1158,9 +1671,10 @@ table[class^="header_"] {
 
 .animetitle span {
   top: 0;
-  margin-top: -54.5px;
+  margin-top: -55px;
   padding-top: 16px;
   background: #fff;
+  z-index: 10;
 }
 
 .animetitle span:hover {
@@ -1170,11 +1684,84 @@ table[class^="header_"] {
   text-overflow: auto;
 }
 
-div[id^="more"] {
+/* -'More info' div
+-----------------------------------------------------------------------------*/
+@keyframes view-more {
+  0% {
+    margin-left: -233px;
+  }
+  100% {
+    margin-left: -5px;
+  }
+}
+
+/* Double atribute selector for specificity reasons */
+div[id^="more"][id^="more"] {
+  display: none;
+  position: relative;
+  height: 410px;
+  margin: 7px 15px -226px;
+  padding: 16px;
+  font-size: 13px;
+}
+
+div[id^="more"][id^="more"] .td1, div[id^="more"][id^="more"] .td2 {
+  width: auto !important;
+  height: auto !important;
+  background: transparent;
+  color: inherit;
+  box-shadow: none;
+}
+
+div[id^="more"][id^="more"] .td1:before, div[id^="more"][id^="more"] .td1:after, div[id^="more"][id^="more"] .td2:before, div[id^="more"][id^="more"] .td2:after {
+  display: none !important;
+  content: none !important;
+}
+
+div[id^="more"][id^="more"] small {
+  font-size: 11px;
+}
+
+div[id^="more"][style*="block"] {
+  /* Must override inline style, but setting important on the table up top will
+	require more specific selectors for hiding other tables. */
+  display: inline-block !important;
+  animation: 0.3s cubic-bezier(0.4, 0, 0.2, 1) view-more;
+  margin-left: -5px;
+}
+
+/* -Misc.
+-----------------------------------------------------------------------------*/
+/* Each category's totals */
+td.category_totals {
   display: none !important;
 }
 
 /* List table <th>'s */
 table[class^="header_"] + table {
   display: none !important;
+}
+
+#grand_totals,
+#copyright {
+  width: calc(100% + (40px));
+  margin-left: -20px;
+  margin-right: -20px;
+  background: #424242;
+  text-align: center;
+}
+
+#grand_totals {
+  margin-top: 50px;
+  padding: 30px 20px 10px;
+  color: #e0e0e0;
+  font-size: 14px;
+}
+
+#copyright {
+  margin-top: 0 !important;
+  padding: 10px 20px 30px;
+  color: #9e9e9e;
+  font-size: 12px;
+  font-weight: 500;
 }

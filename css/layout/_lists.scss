@@ -1,12 +1,18 @@
-/* The actual lists. Each table is a row */
-#list_surround > table ~ table:not([class]) {
-	@extend %card;
-
+/* Anime list rows and 'more' div. */
+#list_surround > table ~ table:not([class]),
+div[id^="more"][style*="block"] {
+	display: inline-block;
 	position: relative;
-	width: 225px !important;
-	height: 300px !important;
-	margin: ($card-content-height + 7px) 5px;
+	width: $card-image-width !important;
+	margin: ($card-content-height + $card-vertical-margin) $card-horizontal-margin;
+	vertical-align: top;
+}
 
+
+
+/* -Each list row
+-----------------------------------------------------------------------------*/
+#list_surround > table ~ table:not([class]) {
 	tbody, tr, td {
 		display: block;
 		position: relative;
@@ -20,28 +26,6 @@
 		background: #fff;
 		z-index: 2;
 	}
-
-	/* Top title and bottom actions backgrounds */
-	&:before,
-	&:after {
-		@include shadow-2dp;
-		content: '';
-		display: block;
-		position: absolute;
-		left: 0;
-		width: 100%;
-		height: $card-content-height;
-		padding: $card-padding-small;
-		z-index: 1;
-		background: #fff;
-	}
-	&:before {
-		height: $card-content-height;
-		bottom: 100%;
-	}
-	&:after {
-		top: 100%;
-	}
 }
 
 /* Each table column */
@@ -50,70 +34,314 @@
 	width: auto;
 	border: 0;
 
-	/* Index */
+	/* Index number
+	Pretty pointless information, so hide the contents and pretend the cell is
+	wrapper for the whole row. This is the only way to fully hide category_totals
+	below, since that selector is on the table cell and not the table itself.
+	Putting the card styles on the table above would leave the card and shadow
+	even with the totals content hidden. */
 	&:nth-child(1) {
-		top: 0;
-		left: 0;
-		padding: 4px $card-padding-small;
-		background: #333;
-		color: #fff;
-		border-bottom-right-radius: 3px;
+		@extend %card;
+
+		position: relative !important;
+		width: $card-image-width !important;
+		height: $card-image-height !important;
+		color: transparent;
+
+		/* Top title and bottom actions backgrounds */
+		&:before,
+		&:after {
+			@include shadow-2dp;
+			content: '';
+			display: block;
+			position: absolute;
+			left: 0;
+			width: 100%;
+			height: $card-content-height;
+			padding: $card-padding-small;
+			background: #fff;
+		}
+		&:before {
+			height: $card-content-height;
+			bottom: 100%;
+			z-index: 1;
+		}
+		&:after {
+			top: 100%;
+			z-index: 3;
+		}
 	}
 
 	/* Title */
 	&:nth-child(2) {
-		position: relative;
 		width: 100%;
 		height: 100%;
-
-		> div {
-			display: none;
-			position: absolute;
-			top: 0;
-			right: 0;
-		}
-		&:hover > div {
-			display: block;
-		}
+		top: 0;
+		z-index: 2;
 	}
 
 	/* Score */
 	&:nth-child(3) {
 		left: $card-padding-small;
-		padding-left: $card-padding-small;
-
-		a {
-			@extend %button;
-
-			position: relative;
-			top: $card-padding-small;
-			left: -$card-padding-small;
-		}
 	}
 
 	/* Type */
 	&:nth-child(4) {
 		left: 50%;
 		transform: translateX(-50%);
-		font-size: 14px;
 	}
 
 	/* Episode count */
 	&:nth-child(5) {
 		right: $card-padding-small;
-		padding-right: $card-padding-small;
+
+		> span[id^="epText"] {
+			display: inline-block;
+		}
 	}
 
+	/* Score and episode count with optional tooltips */
+	@if $show-score-and-episodes-tooltips == true {
+		&:nth-child(3),
+		&:nth-child(5) {
+			min-width: 40px;
+			text-align: center;
+		}
+		&:nth-child(3):after {
+			content: 'Score';
+			left: 0;
+		}
+		&:nth-child(5):after {
+			content: 'Episodes';
+			right: 0;
+		}
+		&:nth-child(3),
+		&:nth-child(5) {
+			&:after {
+				display: block;
+				position: absolute;
+				top: 5px;
+				width: 100%;
+				color: rgba(0, 0, 0, 0.5);
+				font-size: 10px;
+				line-height: 1;
+				text-align: center;
+				opacity: 0;
+				transition: opacity 0.2s $animation-curve-default;
+			}
+			&:hover:after {
+				opacity: 1;
+			}
+		}
+	} @else {
+		&:nth-child(3) {
+			padding-left: $card-padding;
+
+			> a {
+				left: -$card-padding;
+			}
+		}
+		&:nth-child(5) {
+			padding-right: $card-padding;
+
+			> span[id^="epText"] > a {
+				right: -$card-padding;
+			}
+		}
+	}
+
+	/* Score and episode count buttons */
+	&:nth-child(3) a,
+	&:nth-child(5) > span[id^="epText"] > a {
+		@extend %button;
+
+		position: relative;
+		top: $card-padding-small;
+		height: $card-content-height - $card-padding;
+		line-height: $card-content-height - $card-padding;
+	}
+
+	/* Bottom data */
 	&:nth-child(3),
 	&:nth-child(4),
 	&:nth-child(5) {
 		top: 100%;
 		height: $card-content-height;
 		line-height: $card-content-height;
+		font-size: 14px;
 		z-index: 3;
 	}
 }
 
+
+
+/* -Edit/more and episode + 1
+-----------------------------------------------------------------------------*/
+.td1, .td2 {
+	&:nth-child(2) {
+		width: 100%;
+		height: 100%;
+		top: 0;
+		z-index: 2;
+
+		> div {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			padding: $card-padding-small;
+			border-bottom: 1px solid $color-white-separator;
+			background: #fff;
+			color: transparent;
+
+			a {
+				@extend %button;
+
+				&:last-child {
+					position: absolute;
+					top: $card-padding-small;
+					right: $card-padding-small;
+				}
+			}
+		}
+	}
+	&:nth-child(5) > a[href^="javascript"] {
+		@extend %button;
+
+		position: absolute;
+		bottom: 100%;
+		right: -$card-padding-small;
+		margin-right: $card-image-width / 2;
+		margin-bottom: $card-padding-small + 1px;
+		white-space: nowrap;
+
+		&:before {
+			content: 'Ep';
+		}
+	}
+
+	/* ---------- Transitions ---------- */
+	&:nth-child(2) > div,
+	&:nth-child(5) > a[href^="javascript"] {
+		transition-duration: 0.2s;
+		transition-timing-function: $animation-curve-default;
+	}
+
+	/* Default state */
+	&:nth-child(2) > div {
+		transition-property: transform;
+		transition-delay: 0.2s;
+		transform: translateY($card-content-height);
+	}
+	&:nth-child(5) > a[href^="javascript"] {
+		transition-property: transform, opacity;
+		transition-delay: 0.2s, 0s;
+		transform: translateX(50%) translateY($card-content-height);
+		opacity: 0;
+	}
+	table:hover & {
+		&:nth-child(2) > div {
+			transition-delay: 0s;
+			transform: translateY(0px);
+		}
+		&:nth-child(5) > a[href^="javascript"] {
+			transition-delay: 0s, 0.2s;
+			transform: translateX(50%) translateY(0px);
+			opacity: 1;
+		}
+	}
+}
+
+
+
+/* -Score and episode faux dialogs
+-----------------------------------------------------------------------------*/
+@keyframes dialog-edit {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+}
+
+.td1, .td2 {
+	&:nth-child(5) form span[style],
+	div[id^="scorediv"] {
+
+		&:before,
+		&:after {
+			content: '';
+			display: block;
+			position: absolute;
+		}
+	}
+	&:nth-child(5) form span[style*="block"],
+	div[id^="scorediv"][style*="block"] {
+		@extend %dialog;
+
+		top: -($card-image-height - $card-dialog-top);
+		width: $card-image-width - ($card-dialog-margin * 2);
+		padding: 22px $card-padding-small $card-padding-small;
+		line-height: 1.25;
+		background: #fff;
+		animation: 0.3s $animation-curve-default dialog-edit;
+		text-align: right;
+
+		&:before {
+			font-size: 11px;
+			top: $card-padding-small;
+			left: $card-padding-small;
+		}
+		&:after {
+			top: -$card-dialog-top - $card-content-height;
+			left: -$card-dialog-margin;
+			width: $card-image-width;
+			height: $card-image-height + ($card-content-height * 2);
+			background: rgba(0, 0, 0, 0.2);
+			z-index: -1;
+		}
+		input[type="text"] {
+			@extend %text-field;
+
+			width: 100%;
+			text-align: center;
+		}
+		input[type="button"],
+		input[type="submit"] {
+			@extend %button;
+
+			height: 2.25em;
+			line-height: 2.25em;
+			margin-top: $card-padding-small;
+		}
+	}
+
+	div[id^="scorediv"][style*="block"] {
+		left: $card-dialog-margin - $card-padding-small;
+
+		&:before {
+			content: 'Score';
+		}
+	}
+
+	&:nth-child(5) form {
+		display: block !important;
+		position: absolute;
+		bottom: 100%;
+		right: -$card-padding-small;
+		width: $card-image-width;
+
+		span[style*="block"] {
+			left: $card-dialog-margin;
+
+			&:before {
+				content: 'Episode';
+			}
+		}
+	}
+}
+
+
+
+/* -Anime image
+-----------------------------------------------------------------------------*/
 /* The element that gets matched by anime selectors, i.e. a[href^="/anime/"] */
 .animetitle {
 	@extend %card-rounding;
@@ -132,6 +360,7 @@
 		margin-top: -$card-content-height;
 		padding-top: $card-padding;
 		background: #fff;
+		z-index: 10;
 
 		&:hover {
 			white-space: normal;
@@ -142,7 +371,68 @@
 	}
 }
 
-div[id^="more"] {display: none !important;}
+
+
+/* -'More info' div
+-----------------------------------------------------------------------------*/
+@keyframes view-more {
+	0% {margin-left: -($card-image-width + $card-horizontal-margin + 3px);}
+	100% {margin-left: -$card-horizontal-margin;}
+}
+
+/* Double atribute selector for specificity reasons */
+div[id^="more"][id^="more"] {
+	@extend %card;
+
+	display: none;
+	position: relative;
+	height: $card-image-height + ($card-content-height * 2);
+	margin:
+		$card-vertical-margin
+		(($card-horizontal-margin * 2) + 5px)
+		$card-vertical-margin
+		-($card-image-width + $card-horizontal-margin + 3px);
+	padding: $card-padding;
+	font-size: 13px;
+
+	.td1, .td2 {
+		width: auto !important;
+		height: auto !important;
+		background: transparent;
+		color: inherit;
+		box-shadow: none;
+
+		&:before,
+		&:after {
+			display: none !important;
+			content: none !important;
+		}
+	}
+	small {
+		font-size: 11px;
+	}
+}
+div[id^="more"][style*="block"] {
+
+	/* Must override inline style, but setting important on the table up top will
+	require more specific selectors for hiding other tables. */
+	display: inline-block !important;
+
+	animation: 0.3s $animation-curve-default view-more;
+	margin-left: -$card-horizontal-margin;
+}
+
+
+
+/* -Misc.
+-----------------------------------------------------------------------------*/
+
+/* Each category's totals */
+td.category_totals {
+	display: none !important;
+}
 
 /* List table <th>'s */
-table[class^="header_"] + table {display: none !important;}
+table[class^="header_"] + table {
+	display: none !important;
+}

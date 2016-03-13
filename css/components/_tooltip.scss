@@ -1,0 +1,50 @@
+%tooltip-base {
+  display: block;
+  position: absolute;
+  left: 50%;
+  max-width: 170px;
+  padding: 8px;
+  border-radius: 2px;
+  transform: translateX(-50%) scale(0);
+  transform-origin: 50% 100%;
+  z-index: 999;
+  background: rgba($palette-grey-800, 0.9);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14px;
+  text-align: center;
+}
+%tooltip-top {
+  @extend %tooltip-base;
+
+  bottom: 100%;
+}
+%tooltip-bottom {
+  @extend %tooltip-base;
+
+  top: 100%;
+}
+%tooltip-show {
+  animation: tooltip-show 0.2s $animation-curve-linear-out-slow-in forwards;
+}
+
+@keyframes tooltip-show {
+  0% {
+    transform: translateX(-50%) scale(0);
+    opacity: 0;
+  }
+  50% {
+    // Fixes a weird bug with the interaction between Safari and the result of
+    // the SASS compilation for the animation.
+    // Essentially, we need to make sure that "50%" and "100%" don't get merged
+    // into a single "50%, 100%" entry, so we need to avoid them having any
+    // matching properties.
+    transform: translateX(-50%) scale(0.99);
+  }
+  100% {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+    visibility: visible;
+  }
+}

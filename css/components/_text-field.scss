@@ -1,0 +1,12 @@
+%text-field {
+	padding: 4px 0;
+	border: 0;
+	border-bottom: 1px solid $color-text-field-border;
+	background: transparent;
+	font-size: 16px;
+
+	&:focus {
+		border-bottom-color: $color-primary;
+		outline: 0;
+	}
+}
