@@ -156,7 +156,12 @@ let savedCount = 0;
 function saveAnimeData(id, html) {
   const $ = cheerio.load(html);
   let title = $('h1').text();
-  let imageUrl = $('.borderClass').first().find('img').first().attr('src');
+  let $image = $('.borderClass').first().find('img').first();
+
+  let imageUrl = $image.attr('src');
+  if (!imageUrl) {
+    imageUrl = $image.attr('data-src');
+  }
 
   db_anime.insert({
     _id: id,
