@@ -4,6 +4,7 @@ const fs = require('fs');
 const request = require('request');
 const cheerio = require('cheerio');
 const Datastore = require('nedb');
+const exec = require('child_process').exec;
 
 // Force enable for Cygwin that will otherwise require --color flag
 const chalkDep = require('chalk');
@@ -74,6 +75,29 @@ function getListUrl() {
 
 function getAnimeUrl(id) {
   return animeBase + id;
+}
+
+function copyFile(src, dest, cb) {
+  const readStream = fs.createReadStream(src);
+  readStream.on('error', (error) => {
+    console.log(chalk.red(`copyFile: couldn't read ${src}`));
+    throw error;
+  });
+
+  const writeStream = fs.createWriteStream(dest);
+  writeStream.on('error', (error) => {
+    console.log(chalk.red(`copyFile: couldn't write ${dest}`));
+    throw error;
+  });
+
+  readStream.pipe(writeStream);
+
+  writeStream.on('close', () => {
+    console.log(chalk.green(`Copied ${src} to ${dest}`));
+    if ('function' === typeof cb) {
+      cb(src, dest);
+    }
+  });
 }
 
 
@@ -252,10 +276,40 @@ function generateCSS() {
       if (error) {throw error;}
 
       console.log(chalk.green(`Saved data/${config.user}.css!`));
+
+      copyGeneratedCSS();
     });
   });
 }
 
+function copyGeneratedCSS() {
+  copyFile(
+    `data/${config.user}.css`,
+    'css/generated/_anime-images.scss',
+    buildCSS
+  );
+}
+
+function buildCSS() {
+  exec('grunt css', (error, stdout, stderr) => {
+    if (error) {
+      console.log(chalk.red('buildCSS failed'));
+      throw error;
+    } else {
+      console.log(chalk.green('Built css/material-cards.min.css with Grunt!'));
+      copyBuiltCSS();
+    }
+  });
+}
+
+function copyBuiltCSS() {
+  if (configFileData.cssPath) {
+    copyFile(
+      'css/material-cards.min.css',
+      configFileData.cssPath.replace(/\/\\$/, '') + '\\material-cards.min.css'
+    );
+  }
+}
 
 
 /* ---------- Setup and run ---------- */
