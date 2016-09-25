@@ -207,7 +207,7 @@ function fetchSingleAnimeData(id) {
 }
 
 function fetchAllAnimeData(skip) {
-  if (skip.length === totalIdCount) {
+  if (skip && skip.length === totalIdCount) {
     console.log(chalk.green(`All anime data for user '${config.user}' already fetched!`));
 
     if (isFullRun) {
