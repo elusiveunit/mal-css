@@ -39,7 +39,7 @@ let isFullRun = false;
 
 // Optional config file
 const configPath = 'config.json';
-let config = {};
+const config = {};
 let configFileData = {};
 
 // Database files
@@ -130,7 +130,7 @@ function fetchPageBody(url, cb) {
       }
 
       if (requestCount <= maxConcurrent) {
-        let queued = getFromQueue();
+        const queued = getFromQueue();
 
         if (queued) {
           fetchPageBody(queued.url, queued.cb);
@@ -151,7 +151,7 @@ function saveAnimeIdsFromList(html) {
   const links = $('.animetitle');
 
   links.each((i, el) => {
-    let id = parseInt($(el).attr('href').split('/').filter(Boolean)[1], 10);
+    const id = parseInt($(el).attr('href').split('/').filter(Boolean)[1], 10);
 
     db_ids.insert({
       _id: id
@@ -179,8 +179,8 @@ let savedCount = 0;
 
 function saveAnimeData(id, html) {
   const $ = cheerio.load(html);
-  let title = $('h1').text();
-  let $image = $('.borderClass').first().find('img').first();
+  const title = $('h1').text();
+  const $image = $('.borderClass').first().find('img').first();
 
   let imageUrl = $image.attr('src');
   if (!imageUrl) {
