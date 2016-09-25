@@ -47,8 +47,8 @@ let db_ids;
 let db_anime;
 let totalIdCount = 0;
 
-const listBase = 'http://myanimelist.net/animelist/';
-const animeBase = 'http://myanimelist.net/anime/';
+const listBase = 'https://myanimelist.net/animelist/';
+const animeBase = 'https://myanimelist.net/anime/';
 const maxId = 33000;
 
 
