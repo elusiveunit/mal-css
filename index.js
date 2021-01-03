@@ -1,14 +1,13 @@
+#!/usr/bin/env node
+
 'use strict';
 
-const fs = require('fs');
-const request = require('request');
+const chalk = require('chalk');
 const cheerio = require('cheerio');
 const Datastore = require('nedb');
 const exec = require('child_process').exec;
-
-// Force enable for Cygwin that will otherwise require --color flag
-const chalkDep = require('chalk');
-const chalk = new chalkDep.constructor({ enabled: true });
+const fs = require('fs');
+const request = require('request');
 
 // CLI arguments
 const argv = require('yargs')
@@ -105,7 +104,7 @@ function copyFile(src, dest, cb) {
 /* ---------- Requests ---------- */
 
 let requestCount = 0;
-let maxConcurrent = 3;
+let maxConcurrent = 2;
 let requestQueue = [];
 
 function addToQueue(url, cb) {
@@ -208,7 +207,7 @@ function fetchSingleAnimeData(id) {
 
 function fetchAllAnimeData(skip) {
   if (skip && skip.length === totalIdCount) {
-    console.log(chalk.green(`All anime data for user '${config.user}' already fetched!`));
+    console.log(chalk.green(`All anime data for user '${config.user}' already fetched`));
 
     if (isFullRun) {
       console.log(''); /* Newline */
@@ -275,7 +274,7 @@ function generateCSS() {
     fs.writeFile(`data/${config.user}.css`, output, (error) => {
       if (error) {throw error;}
 
-      console.log(chalk.green(`Saved data/${config.user}.css!`));
+      console.log(chalk.green(`Saved data/${config.user}.css`));
 
       copyGeneratedCSS();
     });
@@ -291,12 +290,12 @@ function copyGeneratedCSS() {
 }
 
 function buildCSS() {
-  exec('grunt css', (error, stdout, stderr) => {
+  exec('npm run css', (error, stdout, stderr) => {
     if (error) {
       console.log(chalk.red('buildCSS failed'));
       throw error;
     } else {
-      console.log(chalk.green('Built css/material-cards.min.css with Grunt!'));
+      console.log(chalk.green('Built css/material-cards.min.css!'));
       copyBuiltCSS();
     }
   });

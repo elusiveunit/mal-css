@@ -8,18 +8,17 @@
     "type": "git",
     "url": ""
   },
+  "scripts": {
+    "css": "sass css/material-cards.scss css/material-cards.min.css --style=compressed --no-source-map"
+  },
   "dependencies": {
-    "chalk": "^1.1.1",
-    "cheerio": "^0.20.0",
+    "chalk": "^4.1.0",
+    "cheerio": "^0.22.0",
     "nedb": "^1.8.0",
     "request": "^2.69.0",
-    "yargs": "^4.2.0"
+    "yargs": "^16.2.0"
   },
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-contrib-cssmin": "^1.0.0",
-    "grunt-contrib-watch": "^1.0.0",
-    "grunt-sass": "^1.1.0",
-    "load-grunt-tasks": "^3.4.1"
+    "sass": "~1.32.0"
   }
 }
